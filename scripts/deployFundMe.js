@@ -7,7 +7,7 @@ async function main() {
     console.log("Deploying FundMe contract...");
     const fundMe = await funeMeFactory.deploy(1000);
     await fundMe.waitForDeployment();
-    console.log("FundMe deployed success, contract address:", fundMe.getAddress);
+    console.log("FundMe deployed success, contract address:", fundMe.target);
 }
 
 main().catch((error)=>{
