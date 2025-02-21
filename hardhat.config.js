@@ -2,6 +2,7 @@ require("@nomicfoundation/hardhat-toolbox");
 require("@chainlink/env-enc").config();
 const SEPOLIA_URL = process.env.SEPOLIA_URL;
 const SEPOLIA_ACCOUNT_PRIVATE_KEY = process.env.SEPOLIA_ACCOUNT_PRIVATE_KEY;
+const ETHERSCAN_API = process.env.ETHERSCAN_API;
 // 下面三行是为了设置代理 ，因为使用了clash翻墙 也可以不写，那么clash软件要开启tune（增强模式）
 // const { ProxyAgent, setGlobalDispatcher } = require("undici");
 // const proxyAgent = new ProxyAgent("http://127.0.0.1:7890");
@@ -19,6 +20,6 @@ module.exports = {
     },
   },
   etherscan:{
-    apiKey: "VJUNECH7HRHCSG9UA6P3DAVTJJA4PKREJ7"
+    apiKey: ETHERSCAN_API
   }
 };
