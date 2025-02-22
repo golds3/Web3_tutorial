@@ -1,7 +1,7 @@
-const {ethers} = require("hardhat");
-
-async function main() {
-    //create factory
+const {task} = require("hardhat/config");
+// 创建一个名字为deploy-fundMe的任务，并设置任务的描述为"deploy and verity fundme contract"，
+// 功能上，它将部署FundMe合约，并验证它。
+task("deploy-fundMe","deploy and verity fundme contract").setAction(async(taskArgs,hre)=>{
     const funeMeFactory = await ethers.getContractFactory("FundMe");
     //deploy contract from factory
     console.log("Deploying FundMe contract...");
@@ -19,8 +19,8 @@ async function main() {
     }else{
         console.log("skipping verification: hardhat network is not sepolia");
     }
+})
 
-}
 
 async function verifyFundMe(fundMeAddress,args){
     //run 其实就是执行命令行命令
@@ -29,8 +29,4 @@ async function verifyFundMe(fundMeAddress,args){
         constructorArguments: args,
       });
 }
-
-main().catch((error)=>{
-    console.error(error);
-    process.exit(0);
-})
+module.exports = {}
