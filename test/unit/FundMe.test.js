@@ -1,8 +1,10 @@
 //使用mocha 框架
-const {deployments,getNamedAccounts, ethers} = require("hardhat");
+const {deployments,getNamedAccounts, ethers,network} = require("hardhat");
 const {assert} = require("chai")
-
-describe("test fundme contract",async function(){
+const {devlopmentChains} = require("../../helper-hardhat-config")
+// 如果不是开发环境，则跳过测试
+!devlopmentChains.includes(network.name)?describe.skip
+:describe("test fundme contract",async function(){
     let acct1;
     let acct2;
     let fundMe;

@@ -16,6 +16,9 @@ module.exports = {
   //默认就是hardhat
   // defaultNetwork: "hardhat", //设置网络为 in-process 模式，仅在需要与链交互的时候才创建短暂的网络
   solidity: "0.8.28",
+  mocha:{
+    timeout: 300000,
+  },
   networks: {
     sepolia: {
       url: SEPOLIA_URL,
