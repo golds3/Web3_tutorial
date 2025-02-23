@@ -8,7 +8,7 @@ pragma solidity ^0.8.20;
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol"; //这是chainlink提供等预言机
 
 contract FundMe{
-    AggregatorV3Interface internal dataFeed;
+    AggregatorV3Interface public dataFeed;
 
     address public  owner;
 
@@ -17,9 +17,9 @@ contract FundMe{
     bool public getFundSuccess  = false;
 
     // 0x694AA1769357215DE4FAC081bf1f309aDC325306 是Sepolia 测试网等地址
-    constructor(uint256 _period) {
+    constructor(uint256 _period,address _dataFeed) {
         dataFeed = AggregatorV3Interface(
-            0x694AA1769357215DE4FAC081bf1f309aDC325306
+            _dataFeed
         );
         owner = msg.sender;  //构造器只会执行一次，这一次的sender肯定就是部署合约的这个人，作为owner
         deployTime = block.timestamp;
