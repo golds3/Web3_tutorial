@@ -102,7 +102,7 @@ contract FundMe{
 
     // 规定时间未达到target，捐赠者可以进行退款
     function refund() external windowClose {
-        require(address(this).balance < TARGET, "target is reached");
+        require(converEthToUSD(address(this).balance) < TARGET, "target is reached");
         uint256 senderAmt = fundersToAmount[msg.sender];
         require(senderAmt!=0, "no moeny to refund");
         //deduct 
